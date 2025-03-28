@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GlycoSense - Cadastro</title>
+    <link rel="stylesheet" href="{% static 'cadastro/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>GlycoSense</h1>
+        <div class="form-container" id="formContainer">
+            <form id="registerForm" class="form" method="POST" action="/register">
+                <h2>Cadastro</h2>
+                <input type="text" name="name" placeholder="Nome Completo" required>
+                <input type="email" name="email" placeholder="E-mail" required>
+                <input type="text" name="cpf" placeholder="CPF" required>
+                <input type="password" name="password" placeholder="Senha" required>
+                <button type="submit">Cadastrar</button>
+                <p>Já tem uma conta? <a href="{% url "glycosense:login" %}" onclick="toggleForms()">Faça login</a></p>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

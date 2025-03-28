@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GlycoSense - Sua Saúde em Primeiro Lugar</title>
+    <link rel="stylesheet" href="{% static 'home/home.css' %}">
+</head>
+<body>
+    <header class="h">
+        <h1>GlycoSense</h1>
+        <nav>
+            <a href="{% url "glycosense:login" %}">Login</a>
+            <a href="{% url "glycosense:cadastro" %}">Cadastro</a>
+        </nav>
+    </header>
+
+    <section class="infos">
+        <h2>Controle sua glicose de forma inteligente</h2>
+        <p>O GlycoSense ajuda você a monitorar sua glicose, registrar suas medições e obter insights para uma vida mais saudável.</p>
+        <a href="{% url "glycosense:formulario" %}" class="btn">Faça o teste agora</a>
+    </section>
+
+    <section class="beneficios">
+        <h2>Por que usar o GlycoSense?</h2>
+        <div class="beneficios-cards">
+            <div class="card">
+                <h3>Monitoramento Fácil</h3>
+                <p>Registre suas medições e acompanhe sua evolução.</p>
+            </div>
+            <div class="card">
+                <h3>Alertas Inteligentes</h3>
+                <p>Receba notificações para lembrar das medições.</p>
+            </div>
+            <div class="card">
+                <h3>Relatórios Detalhados</h3>
+                <p>Gráficos e insights para entender melhor sua saúde.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 GlycoSense - Todos os direitos reservados</p>
+    </footer>
+</body>

@@ -1,0 +1,116 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #120f22;
+    color: white;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+header {
+    background: #1c1535;
+    padding: 15px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #b39ddb;
+    width: 100%;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    margin-left: 15px;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: #b39ddb;
+}
+
+.infos {
+    padding: 50px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.infos h2 {
+    color: #b39ddb;
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+.infos p {
+    font-size: 1.2em;
+    max-width: 600px;
+    margin-bottom: 20px;
+}
+
+.btn {
+    background: #7e57c2;
+    color: white;
+    padding: 15px 25px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1em;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: #5e35b1;
+    transform: scale(1.05);
+}
+
+.beneficios {
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.beneficios h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.beneficios-cards {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.card {
+    background: #2a1e50;
+    padding: 20px;
+    border-radius: 10px;
+    width: 280px;
+    text-align: center;
+    transition: 0.3s;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.card:hover {
+    background: #3a2d66;
+    transform: scale(1.05);
+}
+
+footer {
+    background: #1c1535;
+    padding: 15px;
+    width: 100%;
+    font-size: 0.9em;
+}

@@ -1,0 +1,88 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GlycoSense - Formulário</title>
+    <link rel="stylesheet" href="{% static 'formulario/formulario.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>GlycoSense</h1>
+        <div class="form-container">
+            <form id="form" class="form" method="POST" action="#">
+                <h2>Calcule sua chance de ter diabetes</h2>
+
+                <div class="input-group">
+                    <label for="idade">Idade</label>
+                    <input type="number" id="idade" name="idade" placeholder="Digite sua idade" required min="0">
+                </div>
+
+                <div class="input-group">
+                    <label for="imc">IMC</label>
+                    <input type="number" step="0.1" id="imc" name="imc" placeholder="Índice de Massa Corporal" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="gravidez">Gravidez</label>
+                    <input type="number" id="gravidez" name="gravidez" placeholder="Número de gestações (se aplicável)" min="0">
+                </div>
+
+                <div class="input-group">
+                    <label for="glicose">Glicose em Jejum</label>
+                    <input type="number" step="0.1" id="glicose" name="glicose" placeholder="Nível de glicose em jejum" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="hba1c">HBA1C (%)</label>
+                    <input type="number" step="0.1" id="hba1c" name="hba1c" placeholder="Valor percentual de HBA1C" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="ldl">LDL (mg/dL)</label>
+                    <input type="number" step="0.1" id="ldl" name="ldl" placeholder="Nível de LDL" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="hdl">HDL (mg/dL)</label>
+                    <input type="number" step="0.1" id="hdl" name="hdl" placeholder="Nível de HDL" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="triglicerideos">Triglicerídeos (mg/dL)</label>
+                    <input type="number" step="0.1" id="triglicerideos" name="triglicerideos" placeholder="Nível de triglicerídeos" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="abdomen">Circunferência Abdominal (cm)</label>
+                    <input type="number" step="0.1" id="abdomen" name="abdomen" placeholder="Digite em centímetros" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="urinaria">Frequência Urinária (vezes/dia)</label>
+                    <input type="number" id="urinaria" name="urinaria" placeholder="Quantas vezes ao dia?" required min="0">
+                </div>
+
+                <div class="input-group">
+                    <label for="agua">Ingestão de Água (copos/dia)</label>
+                    <input type="number" id="agua" name="agua" placeholder="Quantos copos por dia?" required min="0">
+                </div>
+
+                <div class="input-group">
+                    <label for="atividades">Atividades Físicas</label>
+                    <select id="atividades" name="atividades" required>
+                        <option value="" disabled selected>Selecione uma opção</option>
+                        <option value="sedentario">Sedentário</option>
+                        <option value="moderado">Exercícios Moderados</option>
+                        <option value="intenso">Exercícios Intensos</option>
+                    </select>
+                </div>
+
+                <button type="submit">Descubra sua chance agora!</button>
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>
