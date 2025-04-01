@@ -1,4 +1,5 @@
 {% load static %}
+ 
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -10,7 +11,9 @@
 </head>
 <body>
     <div class="container">
-        <h1>GlycoSense</h1>
+        <nav class="navbar">
+            <h1 class="logo"><a href="{% url 'home:home' %}">GlycoSense</a></h1>
+        </nav>
         <div class="form-container" id="formContainer">
             <form id="loginForm" class="form active" method="POST" action="/login">
                 <h2>Login</h2>

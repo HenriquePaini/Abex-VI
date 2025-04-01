@@ -9,7 +9,9 @@
 </head>
 <body>
     <div class="container">
-        <h1>GlycoSense</h1>
+        <nav class="navbar">
+            <h1 class="logo"><a href="{% url 'home:home' %}">GlycoSense</a></h1>
+        </nav>
         <div class="form-container" id="formContainer">
             <form id="registerForm" class="form" method="POST" action="/register">
                 <h2>Cadastro</h2>
