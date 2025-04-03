@@ -1,19 +1,56 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login, logout
+from django.contrib import messages
+from django.contrib.messages import get_messages  # Para limpar mensagens antigas
+from .forms import CustomUserCreationForm
+from .models import CustomUser
 
-# Create your views here.
-# HTTP Request <-> HTTP Response
-# MVT (MVC): Model View controller
+#  VIEW DE LOGIN
+def login_view(request):
+    messages.get_messages(request).used = True  # Limpa as mensagens antigas
+
+    if request.method == 'POST':
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+        user = authenticate(request, email=email, password=password)
+
+        if user is not None:
+            login(request, user)
+            messages.success(request, "Login realizado com sucesso!")
+            return redirect('home:home')
+        else:
+            messages.error(request, "Email ou senha inválidos!")
+
+    return render(request, 'login/login.html')
 
 
-def login(request):  #Função que recebe uma request e retorna uma response
-    print('login')
-    return render(request, 'login/login.html') # Com o parametro contexto, posso adicionar dados extras para serem renderizados no template
-# O render é uma função que recebe uma request e um template e retorna uma response
+#  VIEW DE CADASTRO
+def register_view(request):
+    if request.method == "POST":
+        form = CustomUserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            messages.success(request, "Cadastro realizado com sucesso! Faça login para continuar.")  
+            return redirect("login:login")  # Redireciona para a tela de login
+        else:
+            messages.error(request, "Erro ao cadastrar. Verifique os dados!")
 
-def cadastro(request):  #Função que recebe uma request e retorna uma response
-    print('cadastro')
-    return render(request, 'cadastro/cadastro.html')
+    else:
+        form = CustomUserCreationForm()
 
-def formulario(request):  #Função que recebe uma request e retorna uma response
-    print('formulario')
-    return render(request, 'formulario/formulario.html')
+    return render(request, "cadastro/cadastro.html", {"form": form})
+
+
+#  VIEW DE LOGOUT
+def logout_view(request):
+    logout(request)
+    messages.success(request, "Logout realizado com sucesso!")
+    return redirect("home:home")
+
+
+#  OUTRAS VIEWS (Se precisar delas)
+def cadastro_view(request):
+    return render(request, "cadastro/cadastro.html")
+
+def formulario_view(request):
+    return render(request, "formulario/formulario.html")

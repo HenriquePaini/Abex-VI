@@ -1,26 +1,30 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GlycoSense - Cadastro</title>
     <link rel="stylesheet" href="{% static 'cadastro/style.css' %}">
 </head>
+
 <body>
     <div class="container">
         <nav class="navbar">
             <h1 class="logo"><a href="{% url 'home:home' %}">GlycoSense</a></h1>
         </nav>
         <div class="form-container" id="formContainer">
-            <form id="registerForm" class="form" method="POST" action="/register">
+            <form id="registerForm" class="form" method="POST" action="{% url 'login:register' %}">
                 <h2>Cadastro</h2>
-                <input type="text" name="name" placeholder="Nome Completo" required>
-                <input type="email" name="email" placeholder="E-mail" required>
-                <input type="text" name="cpf" placeholder="CPF" required>
-                <input type="password" name="password" placeholder="Senha" required>
+                {% csrf_token %}
+                {% for field in form %}
+
+                <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                {{ field }}
+                {% endfor %}
                 <button type="submit">Cadastrar</button>
-                <p>Já tem uma conta? <a href="{% url "glycosense:login" %}" onclick="toggleForms()">Faça login</a></p>
+                <p>Já tem uma conta? <a href="{% url 'login:login' %}" onclick="toggleForms()">Faça login</a></p>
             </form>
         </div>
     </div>

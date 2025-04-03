@@ -1,25 +1,36 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GlycoSense - Sua Saúde em Primeiro Lugar</title>
     <link rel="stylesheet" href="{% static 'home/home.css' %}">
 </head>
+
 <body>
     <header class="h">
         <h1>GlycoSense</h1>
         <nav>
-            <a href="{% url "glycosense:login" %}">Login</a>
-            <a href="{% url "glycosense:cadastro" %}">Cadastro</a>
+            {% if request.user.is_authenticated %}
+            <a href="{% url 'glycosense:logout' %}">Sair</a>
+            {% else %}
+            <a href="{% url 'glycosense:login' %}">Login</a>
+            <a href="{% url 'glycosense:register' %}">Cadastro</a>
+            {% endif %}
         </nav>
     </header>
-    
+
     <section class="infos">
         <h2>Controle sua glicose de forma inteligente</h2>
-        <p>O GlycoSense ajuda você a monitorar sua glicose, registrar suas medições e obter insights para uma vida mais saudável.</p>
-        <a href="{% url "glycosense:formulario" %}" class="btn">Faça o teste agora</a>
+        <p>O GlycoSense ajuda você a monitorar sua glicose, registrar suas medições e obter insights para uma vida mais
+            saudável.</p>
+        {% if request.user.is_authenticated %}
+        <a href="{% url 'glycosense:formulario' %}" class="btn">Faça o teste agora</a>
+        {% else %}
+        <a href="{% url 'glycosense:login' %}" class="btn">Faça o teste agora</a>
+        {% endif %}
     </section>
 
     <section class="beneficios">

@@ -1,11 +1,11 @@
-from django.contrib import admin
 from django.urls import path
 from . import views 
 
-app_name = 'glycosense'  # Nome do app
+app_name = 'login'  # Altere de 'glycosense' para 'login' para evitar erros de namespace
 
 urlpatterns = [
-    path('login/', views.login, name='login'),
-    path('cadastro/', views.cadastro, name='cadastro'),
-    path('formulario/', views.formulario, name='formulario'),
+    path('login/', views.login_view, name='login'),
+    path('formulario/', views.formulario_view, name='formulario'),
+    path('register/', views.register_view, name='register'),  # Adiciona a URL do cadastro
+    path('logout/', views.logout_view, name='logout'),
 ]
