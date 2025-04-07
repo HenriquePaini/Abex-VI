@@ -20,6 +20,8 @@ from django.urls import path, include
 urlpatterns = [
     path('', include('home.urls')),  # Inclui as URLs do app 'home'
     path('login/', include(('login.urls', 'login'), namespace='glycosense')),  # Define o namespace corretamente
-    path('formulario/', include('formulario.urls')),  # Inclui as URLs do app 'formulario'
+    path('formulario/', include(('formulario.urls', 'formulario'), namespace='formulario')),  # Inclui as URLs do app 'formulario'
     path('admin/', admin.site.urls),
 ]
+
+

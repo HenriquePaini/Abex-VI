@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-from django.contrib.messages import get_messages  # Para limpar mensagens antigas
+from django.contrib.messages import get_messages  # Limpa as mensagens antigas
 from .forms import CustomUserCreationForm
 from .models import CustomUser
 
@@ -48,7 +48,7 @@ def logout_view(request):
     return redirect("home:home")
 
 
-#  OUTRAS VIEWS (Se precisar delas)
+#  OUTRAS VIEWS 
 def cadastro_view(request):
     return render(request, "cadastro/cadastro.html")
 

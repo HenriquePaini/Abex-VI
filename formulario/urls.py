@@ -1,13 +1,16 @@
 from django.contrib import admin
+# formulario/urls.py
 from django.urls import path
-from . import views 
+from . import views
 
-app_name = 'formularios'  # Nome do app
+app_name = 'formularios'
 
 urlpatterns = [
-    path('formulario/', views.formulario, name='formulario'),
+    path('', views.formulario_view, name='formulario'),  # Página principal do formulário
     path('resultado/', views.resultado, name='resultado'),
 ]
+
+
 
 """
 cartão independente, cartão negociavel(nao pode ser o fim), cartão valioso(deve entregar valor. algo)

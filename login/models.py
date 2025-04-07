@@ -18,7 +18,7 @@ class CustomUserManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
-class CustomUser(AbstractBaseUser, PermissionsMixin):  # Já herda PermissõesMixin
+class CustomUser(AbstractBaseUser, PermissionsMixin): 
     email = models.EmailField(unique=True)
     name = models.CharField(max_length=255)
     cpf = models.CharField(max_length=14, unique=True)
