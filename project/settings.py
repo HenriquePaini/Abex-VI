@@ -94,10 +94,7 @@ DATABASES = {
     }
 }
 
-DATABASE_ROUTERS = ['formulario.dbrouter.FormularioRouter']
-
-
-
+DATABASE_ROUTERS = ['formulario.dbrouter.FormularioRouter'] # Roteador de banco de dados para o app 'formulario'
 
 
 
