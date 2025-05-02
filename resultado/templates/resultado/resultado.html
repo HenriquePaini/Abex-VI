@@ -1,0 +1,149 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <title>{% if positivo %}Resultado da Análise{% else %}Alerta de Saúde{% endif %}</title>
+    <link rel="stylesheet" href="{% static 'resultado/resultado.css' %}">
+</head>
+
+<body>
+    <div class="container">
+        <div class="{% if positivo %}success-icon{% else %}warning-icon{% endif %}">
+            {% if positivo %}✅{% else %}⚠️{% endif %}
+        </div>
+
+        <h1>
+            {% if positivo %}
+            Muito bom! Sua Saúde Está em Dia! 🎉
+            {% else %}
+            Atenção! Risco de Diabetes Detectado
+            {% endif %}
+        </h1>
+
+        <p class="message">
+            {% if positivo %}
+            De acordo com sua análise, você <strong>não possui diabetes!</strong><br>
+            Continue mantendo seus hábitos saudáveis para preservar sua saúde.
+            {% else %}
+            Com base em sua análise, há um <strong>risco elevado</strong> de diabetes.<br>
+            Recomendamos que consulte um profissional de saúde para mais orientações.
+            {% endif %}
+        </p>
+
+        <div class="tips">
+            <h2>
+                {% if positivo %}💡 Dicas para manter-se saudável{% else %}🔍 O que você pode fazer?{% endif %}
+            </h2>
+            <ul>
+                {% if positivo %}
+                <li>🥦 Mantenha uma alimentação equilibrada.</li>
+                <li>🏃‍♂️ Pratique exercícios regularmente.</li>
+                <li>💧 Beba bastante água todos os dias.</li>
+                <li>🛌 Tenha boas noites de sono.</li>
+                <li>🩺 Continue monitorando sua glicose periodicamente.</li>
+                {% else %}
+                <li>📅 Agende uma consulta com um médico.</li>
+                <li>🥗 Revise sua alimentação e evite açúcar em excesso.</li>
+                <li>🏃‍♂️ Pratique atividades físicas regularmente.</li>
+                <li>🩺 Monitore sua glicose e faça exames periódicos.</li>
+                <li>💧 Beba bastante água e reduza bebidas açucaradas.</li>
+                {% endif %}
+            </ul>
+        </div>
+
+        <a class="btn {% if not positivo %}danger{% endif %}">
+            {% if positivo %}Continue Acompanhando{% else %}Falar com um Especialista{% endif %}
+        </a>
+    </div>
+</body>
+
+</html>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+    }
+
+    body {
+        background: #1e1b33;
+        color: white;
+        text-align: center;
+        padding: 20px;
+    }
+
+    .container {
+        max-width: 600px;
+        margin: 0 auto;
+        background: #29204d;
+        padding: 25px;
+        border-radius: 10px;
+        box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .success-icon {
+        font-size: 60px;
+        color: #4CAF50;
+        animation: pop 0.5s ease-in-out;
+    }
+
+    @keyframes pop {
+        0% {
+            transform: scale(0);
+        }
+
+        50% {
+            transform: scale(1.2);
+        }
+
+        100% {
+            transform: scale(1);
+        }
+    }
+
+    h1 {
+        color: #b3ffcc;
+        margin-top: 10px;
+    }
+
+    .message {
+        font-size: 1.2em;
+        margin: 20px 0;
+    }
+
+    .tips {
+        margin-top: 30px;
+        text-align: left;
+    }
+
+    .tips ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .tips li {
+        background: rgba(255, 255, 255, 0.1);
+        padding: 10px;
+        margin: 5px 0;
+        border-radius: 5px;
+    }
+
+    .btn {
+        display: inline-block;
+        margin-top: 20px;
+        background: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: 0.3s;
+    }
+
+    .btn:hover {
+        background: #388E3C;
+        transform: scale(1.05);
+    }
+</style>

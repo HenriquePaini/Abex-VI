@@ -22,6 +22,8 @@ urlpatterns = [
     path('login/', include(('login.urls', 'login'), namespace='glycosense')),  # Define o namespace corretamente
     path('formulario/', include(('formulario.urls', 'formulario'), namespace='formulario')),  # Inclui as URLs do app 'formulario'
     path('admin/', admin.site.urls),
+    path('resultado/', include(('resultado.urls', 'resultado'), namespace='resultado')),
+
 ]
 
 

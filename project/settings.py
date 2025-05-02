@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'home',  # Adicionando o app 'home'
     'login', # Adicionando o app 'login'
     'formulario',  # Adicionando o app 'formulario'
+    'resultado', # Adicionando o app 'resultado'
 
 
 
@@ -134,6 +135,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+STATICFILES_DIRS = [BASE_DIR / 'static']
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
