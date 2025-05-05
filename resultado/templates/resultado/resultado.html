@@ -1,4 +1,5 @@
 {% load static %}
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -6,6 +7,7 @@
     <meta charset="UTF-8">
     <title>{% if positivo %}Resultado da Análise{% else %}Alerta de Saúde{% endif %}</title>
     <link rel="stylesheet" href="{% static 'resultado/resultado.css' %}">
+
 </head>
 
 <body>
@@ -60,90 +62,3 @@
 </body>
 
 </html>
-<style>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: Arial, sans-serif;
-    }
-
-    body {
-        background: #1e1b33;
-        color: white;
-        text-align: center;
-        padding: 20px;
-    }
-
-    .container {
-        max-width: 600px;
-        margin: 0 auto;
-        background: #29204d;
-        padding: 25px;
-        border-radius: 10px;
-        box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
-    }
-
-    .success-icon {
-        font-size: 60px;
-        color: #4CAF50;
-        animation: pop 0.5s ease-in-out;
-    }
-
-    @keyframes pop {
-        0% {
-            transform: scale(0);
-        }
-
-        50% {
-            transform: scale(1.2);
-        }
-
-        100% {
-            transform: scale(1);
-        }
-    }
-
-    h1 {
-        color: #b3ffcc;
-        margin-top: 10px;
-    }
-
-    .message {
-        font-size: 1.2em;
-        margin: 20px 0;
-    }
-
-    .tips {
-        margin-top: 30px;
-        text-align: left;
-    }
-
-    .tips ul {
-        list-style: none;
-        padding: 0;
-    }
-
-    .tips li {
-        background: rgba(255, 255, 255, 0.1);
-        padding: 10px;
-        margin: 5px 0;
-        border-radius: 5px;
-    }
-
-    .btn {
-        display: inline-block;
-        margin-top: 20px;
-        background: #4CAF50;
-        color: white;
-        padding: 10px 20px;
-        text-decoration: none;
-        border-radius: 5px;
-        transition: 0.3s;
-    }
-
-    .btn:hover {
-        background: #388E3C;
-        transform: scale(1.05);
-    }
-</style>

@@ -7,3 +7,4 @@ def mostrar_resultado(request):
             'positivo': resultado == '0'
         }
         return render(request, 'resultado/resultado.html', contexto)
+
