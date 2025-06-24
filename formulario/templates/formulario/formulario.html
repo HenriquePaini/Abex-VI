@@ -1,11 +1,13 @@
 {% load static %}
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
-    <title>GlycoSense</title>
+    <title>GlycoSense - Análise</title>
     <link rel="stylesheet" href="{% static 'formulario/formulario.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
@@ -13,64 +15,54 @@
         <nav class="navbar">
             <h1 class="logo"><a href="{% url 'home:home' %}">GlycoSense</a></h1>
         </nav>
-        <h2>Preencha os dados abaixo:</h2>
+
+        <h2>Preencha os dados para análise</h2>
 
         <div class="form-container">
-            <form method="POST" action="{% url 'formularios:resultado' %}" class="form">
+            <form class="form" action="{% url 'formulario:processar_predicao' %}" method="post">
                 {% csrf_token %}
 
                 <div class="input-group">
-                    <label for="gravidez">Número de gestações</label>
-                    <input type="number" name="gravidez" id="gravidez" placeholder="Número de gestações">
+                    <label for="pregnancies">Número de Gravidez:</label>
+                    <input type="number" id="pregnancies" name="pregnancies" required>
                 </div>
 
                 <div class="input-group">
-                    <label for="glicose">Glicose (mg/dL)</label>
-                    <input type="number" name="glicose" id="glicose" placeholder="Glicose (mg/dL)" required>
+                    <label for="glucose">Glicose (mg/dL):</label>
+                    <input type="number" id="glucose" name="glucose" required>
                 </div>
 
                 <div class="input-group">
-                    <label for="pressao">Pressão Arterial (mm Hg)</label>
-                    <input type="number" name="pressao" id="pressao" placeholder="Pressão Arterial (mm Hg)" required>
+                    <label for="blood_pressure">Pressão Sanguínea (mm Hg):</label>
+                    <input type="number" id="blood_pressure" name="blood_pressure" required>
                 </div>
 
                 <div class="input-group">
-                    <label for="espessura_pele">Espessura da pele (mm)</label>
-                    <input type="number" name="espessura_pele" id="espessura_pele" placeholder="Espessura da pele (mm)"
-                        required>
+                    <label for="skin_thickness">Espessura da Pele (mm):</label>
+                    <input type="number" id="skin_thickness" name="skin_thickness" required>
                 </div>
 
                 <div class="input-group">
-                    <label for="insulina">Insulina (mu U/ml)</label>
-                    <input type="number" name="insulina" id="insulina" placeholder="Insulina (mu U/ml)" required>
+                    <label for="insulin">Insulina (mu U/ml):</label>
+                    <input type="number" id="insulin" name="insulin" required>
                 </div>
 
                 <div class="input-group">
-                    <label for="imc">IMC (kg/m²)</label>
-                    <input type="number" step="0.1" name="imc" id="imc" placeholder="IMC (kg/m²)" required>
+                    <label for="bmi">IMC (Índice de Massa Corporal):</label>
+                    <input type="text" id="bmi" name="bmi" required>
                 </div>
 
                 <div class="input-group">
-                    <label for="pedigree">Função Pedigree</label>
-                    <input type="number" step="0.001" name="pedigree" id="pedigree" placeholder="Função Pedigree"
-                        required>
+                    <label for="diabetes_pedigree">Histórico Familiar (Pedigree):</label>
+                    <input type="text" id="diabetes_pedigree" name="diabetes_pedigree" required>
                 </div>
 
                 <div class="input-group">
-                    <label for="idade">Idade</label>
-                    <input type="number" name="idade" id="idade" placeholder="Idade" required>
+                    <label for="age">Idade:</label>
+                    <input type="number" id="age" name="age" required>
                 </div>
 
-                <div class="input-group">
-                    <label for="resultado">Resultado</label>
-                    <select name="resultado" id="resultado" required>
-                        <option value="">Selecione</option>
-                        <option value="0">Negativo</option>
-                        <option value="1">Positivo</option>
-                    </select>
-                </div>
-
-                <button type="submit">Descubra sua chance agora!</button>
+                <button type="submit">Descobrir minha chance agora!</button>
             </form>
         </div>
     </div>

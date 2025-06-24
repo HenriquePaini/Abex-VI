@@ -5,60 +5,64 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>{% if positivo %}Resultado da Análise{% else %}Alerta de Saúde{% endif %}</title>
+    <title>{% if predicao == 0 %}Resultado da Análise{% else %}Alerta de Saúde{% endif %}</title>
     <link rel="stylesheet" href="{% static 'resultado/resultado.css' %}">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
     <div class="container">
-        <div class="{% if positivo %}success-icon{% else %}warning-icon{% endif %}">
-            {% if positivo %}✅{% else %}⚠️{% endif %}
-        </div>
+        <nav class="navbar">
+            <h1 class="logo"><a href="{% url 'home:home' %}">GlycoSense</a></h1>
+        </nav>
 
         <h1>
-            {% if positivo %}
-            Muito bom! Sua Saúde Está em Dia! 🎉
+            {% if predicao == 0 %}
+            Muito bom! Sua Saúde Está em Dia!
             {% else %}
-            Atenção! Risco de Diabetes Detectado
+            Atenção! Risco de Diabetes Detectado ⚠️
             {% endif %}
         </h1>
 
         <p class="message">
-            {% if positivo %}
-            De acordo com sua análise, você <strong>não possui diabetes!</strong><br>
+            {% if predicao == 0 %}
+            De acordo com sua análise, você <strong>não possui risco de diabetes!</strong>
             Continue mantendo seus hábitos saudáveis para preservar sua saúde.
             {% else %}
-            Com base em sua análise, há um <strong>risco elevado</strong> de diabetes.<br>
+            Com base em sua análise, há um <strong>risco elevado</strong> de diabetes.
             Recomendamos que consulte um profissional de saúde para mais orientações.
             {% endif %}
         </p>
 
+        {% if probabilidade is not None %}
+        <div class="details-container">
+            <div class="chance-container">
+                <h3>Probabilidade de Risco</h3>
+                <div class="chance-value">{% widthratio probabilidade 1 100 %}%</div>
+            </div>
+        </div>
+        {% endif %}
+
         <div class="tips">
             <h2>
-                {% if positivo %}💡 Dicas para manter-se saudável{% else %}🔍 O que você pode fazer?{% endif %}
+                {% if predicao == 0 %}💡 Dicas para manter-se saudável{% else %}🔍 O que você pode fazer?{% endif %}
             </h2>
             <ul>
-                {% if positivo %}
+                {% if predicao == 0 %}
                 <li>🥦 Mantenha uma alimentação equilibrada.</li>
                 <li>🏃‍♂️ Pratique exercícios regularmente.</li>
                 <li>💧 Beba bastante água todos os dias.</li>
-                <li>🛌 Tenha boas noites de sono.</li>
-                <li>🩺 Continue monitorando sua glicose periodicamente.</li>
                 {% else %}
                 <li>📅 Agende uma consulta com um médico.</li>
                 <li>🥗 Revise sua alimentação e evite açúcar em excesso.</li>
                 <li>🏃‍♂️ Pratique atividades físicas regularmente.</li>
-                <li>🩺 Monitore sua glicose e faça exames periódicos.</li>
-                <li>💧 Beba bastante água e reduza bebidas açucaradas.</li>
                 {% endif %}
             </ul>
         </div>
 
-        <a class="btn {% if not positivo %}danger{% endif %}">
-            {% if positivo %}Continue Acompanhando{% else %}Falar com um Especialista{% endif %}
-        </a>
-    </div>
-</body>
-
-</html>
+        <div class="button-group">
+            <a href="{% if predicao == 1 %}#testeee{% else %}#testeee{% endif %}"
+                class="btn {% if predicao == 1 %}Cuidado{% endif %}">
+                {% if predicao == 0 %}Continue Acompanhando{% else %}Falar com um Especialista{% endif %}
+            </a>
+            <a href="{% url 'formulario:formulario_view' %}" class="btn-back">Fazer teste denovo

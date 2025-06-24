@@ -23,7 +23,6 @@ urlpatterns = [
     path('formulario/', include(('formulario.urls', 'formulario'), namespace='formulario')),  # Inclui as URLs do app 'formulario'
     path('resultado/', include(('resultado.urls', 'resultado'), namespace='resultado')), # Inclui as URLs do app 'resultado'
     path('admin/', admin.site.urls),
-    
 
 ]
 
