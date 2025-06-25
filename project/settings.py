@@ -147,4 +147,4 @@ AUTHENTICATION_BACKENDS = ['login.authentication.EmailBackend']
 AUTH_USER_MODEL = 'login.CustomUser'
 
 # no python manage.py shell, usar "from login.models import CustomUser
-#                                   CustomUser.objects.all()" para ver os usuários cadastrados
+#                                  CustomUser.objects.all()" para ver os usuários cadastrados

@@ -1,0 +1,160 @@
+"""
+DOCUMENTAÇÃO DO PROJETO,
+############################################################
+Esse projeto é uma aplicação web desenvolvida com Django, que utiliza aprendizado de máquina para prever a presença de diabetes em pacientes com base em dados clínicos. 
+A aplicação permite o upload de arquivos CSV contendo dados de pacientes, treina um modelo de machine learning e exibe os resultados das previsões.
+############################################################
+"""
+
+"""
+ESTRUTURA DO PROJETO
+############################################################
+O projeto é organizado em várias pastas e arquivos, cada um com uma função específica. A seguir está a estrutura do projeto,
+############################################################
+"""
+# Estrutura do Projeto
+# GlycoSense/
+# ├── .venv/                                                    
+# ├── main_keras.py                                             
+# ├── treinar_modelo.py                                         
+# ├── requirements.txt                                          
+# │                         
+# ├── artefatos/                                                
+# │   ├── diabetes_model.joblib                                 
+# │   ├── colunas_do_modelo.joblib                          
+# │   └── modelo.ipynb                                         
+# │                         
+# ├── formulario/                                               
+# │   ├── static/formulario/                                    
+# │   ├── templates/formulario/                                
+# │   ├── forms.py                                              
+# │   ├── views.py                                              
+# │   ├── urls.py                                               
+# │   └── models.py                                             
+# │                         
+# ├── home/                                                     
+# │   ├── static/home/home.css                          
+# │   ├── templates/home/home.html 
+# |   ├── urls.py                      
+# │   └── views.py
+#                                    
+# │                         
+# ├── login/                                                    
+# │   ├── static/cadastro/style.css
+# │   ├── static/login/login.css
+# │   ├── templates/cadastro/cadastro.html
+# │   ├── templates/login/login.html
+# │   ├── authentication.py                                     
+# │   ├── forms.py
+# |   ├── views.py 
+# |   ├── models.py 
+# |   └── urls.py
+# │
+# ├── project/
+# │   ├── __init__.py
+# │   ├── settings.py
+# │   ├── urls.py
+# │   ├── wsgi.py
+# │   └── asgi.py
+# │   
+# ├── resultado/
+# │   ├── static/resultado/style.css
+# │   ├── templates/resultado/resultado.html
+# │   ├── urls.py
+# │   └── views.py 
+# |                                                  
+# ├── import_csv/                                                 
+
+"""
+REQUISITOS DO PROJETO
+############################################################
+O projeto utiliza as seguintes bibliotecas e frameworks:
+##############################################################
+"""
+#- Python 3.10+    
+#- Django (framework web)                   
+#- Bibliotecas:
+#- flask (para a API)
+#- pandas (para manipulação de dados)
+#- scikit-learn (para machine learning)
+#- imbalanced-learn (para lidar com desbalanceamento de classes)
+#- joblib (para salvar e carregar modelos)
+#- requests (para fazer requisições HTTP)
+#- jupyter (opcional para rodar o notebook)
+
+"""
+INSTRUÇÕES PARA REPLICAÇÃO DO PROJETO
+############################################################
+Para replicar o projeto, siga os passos abaixo
+############################################################
+""" 
+#Instalação da linguagem Python:
+# 1. Instale o Python 3.10 ou superior em seu sistema operacional. Você pode baixar a versão mais recente do Python em https://www.python.org/downloads/.
+# 2. Instale o django, que é o framework web utilizado no projeto. Você pode fazer isso usando o pip, o gerenciador de pacotes do Python. Execute o seguinte comando no terminal:
+#    pip install django
+# 3. Crie e ative um ambiente virtual para isolar as dependências do projeto. Você pode fazer isso com os seguintes comandos:
+#    python -m venv .venv
+#    .venv\Scripts\activate
+# 4. Instale as dependências do projeto listadas no arquivo requirements.txt e as biblitecas listadas acima. Execute o seguinte comando no terminal:
+#    pip install -r requirements.txt
+#    pip install flask pandas scikit-learn imbalanced-learn joblib requests jupyter
+# 5. Criação dos apps Django:
+#    - Crie os apps Django necessários para o projeto. Execute os seguintes comandos no terminal
+#    django-admin startapp home
+#    django-admin startapp login
+#    django-admin startapp formulario
+#    django-admin startapp resultado
+# 5.1. Criação dos arquivos urls.py e views.py para cada app:
+#    - Dentro de cada app criado, crie os arquivos urls.py e views.py.
+#    - O arquivo urls.py será usado para definir as rotas do app, enquanto o views.py conterá a lógica de cada view.
+# 6. Configuração do Django:
+#    - Abra o arquivo settings.py localizado na pasta project e adicione os apps criados na lista INSTALLED_APPS. Por exemplo:
+#      INSTALLED_APPS = [
+#          'django.contrib.admin',
+#          'django.contrib.auth',
+#          'django.contrib.contenttypes',
+#          'django.contrib.sessions',
+#          'django.contrib.messages',
+#          'django.contrib.staticfiles',
+#          'home',
+#          'login',
+#          'formulario',
+#          'resultado',
+# 7. Configuração do banco de dados:
+#    - No arquivo settings.py, configure o banco de dados que você deseja usar. Por exemplo, se você estiver usando o SQLite, a configuração padrão já deve funcionar. 
+#    Se estiver usando outro banco de dados, como PostgreSQL ou MySQL, você precisará instalar os drivers correspondentes e configurar as credenciais.
+# 8. Migrações do banco de dados:
+#    - Execute as migrações do banco de dados para criar as tabelas necessárias.
+#    Execute o seguinte comando no terminal:
+#    python manage.py migrate
+# 9. Criação de superusuário:
+#    - Crie um superusuário para acessar o painel de administração do Django. Execute o seguinte comando no terminal:
+#    python manage.py createsuperuser
+# 10. Execução do servidor de desenvolvimento:
+#     - Inicie o servidor de desenvolvimento do Django para verificar se tudo está funcionando corretamente.
+#     Execute o seguinte comando no terminal:
+#     python manage.py runserver
+# 11. Acesse a aplicação:
+#     - Abra o navegador e acesse "http://" que será exibido no terminal após iniciar o servidor.
+#     Você deve ver a página inicial do Django.
+# 12. Treinamento do modelo de machine learning:
+#    - Para treinar o modelo de machine learning, execute o script "treinar_modelo.py" localizado na raiz do projeto.
+#    - Certifique-se de que os dados necessários para o treinamento estejam disponíveis. 
+#    - O modelo utiliza os dados de diabetes disponíveis no arquivo "diabetes.csv" e salva o modelo treinado na pasta "artefatos" como "diabetes_model.joblib".
+#
+#Passos Adicionais:
+# 1. A criação das telas do front-end foi feita utilizando HTML, CSS e django templates.
+# 2. As views foram implementadas para lidar com as requisições e renderizar os templates.
+# 3. As URLs foram configuradas para mapear as requisições para as views.
+
+
+"""
+INFORMAÇÕES ADICIONAIS
+"""
+# models.py — para criar as tabelas e dados
+# views.py — para colocar a lógica da aplicação
+# urls.py (você pode criar este arquivo para definir rotas específicas do app)
+# admin.py — para registrar modelos no painel admin
+ 
+   
+
